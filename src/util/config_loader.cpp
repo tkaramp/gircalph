@@ -1,26 +1,19 @@
 #include <iostream>
 #include <sstream>
-#include "config_loader.hpp"
 #include <algorithm>
-#include <locale>
 
-// trim from start
-static inline std::string &ltrim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
-    return s;
+#include "config_loader.hpp"
+
+static std::string config_loader::del_spaces(std::string &str)
+{
+    str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
+    return str;
 }
 
-// trim from end
-static inline std::string &rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
-    return s;
+static bool config_loader::starts_with(std::string initial_str, std::string beginning_str)
+{
+    return !initial_str.compare(0, beginning_str.length(), beginning_str);
 }
-
-// trim from both ends
-static inline std::string &trim(std::string &s) {
-    return ltrim(rtrim(s));
-}
-
 
 static std::map<std::string, std::string> config_loader::load_conf_params(){
     std::map<std::string, std::string> config_params;
@@ -29,6 +22,11 @@ static std::map<std::string, std::string> config_loader::load_conf_params(){
 
     while( std::getline(is_file, line) )
     {
+        del_spaces(line);
+
+        // skip comments
+        if (starts_with(line, "#"))
+            continue;
 
         std::istringstream is_line(line);
         std::string key;
@@ -36,7 +34,7 @@ static std::map<std::string, std::string> config_loader::load_conf_params(){
         {
             std::string value;
             if( std::getline(is_line, value) )
-                store_line(key, value);
+                config_params.insert(key, value);
         }
     }
 
