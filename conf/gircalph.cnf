@@ -1,0 +1,4 @@
+# Gircalph configuration.
+# Commandline parameters override values in the configuration file.
+
+num_of_vertices=40
