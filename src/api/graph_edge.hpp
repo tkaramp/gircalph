@@ -9,19 +9,19 @@ private:
     int connected_vertex_id;
 
 public:
-    int get_Connected_vertex_id() const {
+    inline int get_Connected_vertex_id() const {
         return connected_vertex_id;
     }
 
-    void set_connected_vertex_id(int connected_vertex_id) {
+    inline void set_connected_vertex_id(int connected_vertex_id) {
         graph_edge::connected_vertex_id = connected_vertex_id;
     }
 
-    T get_edge_data() const {
+    inline T get_edge_data() const {
         return edge_data;
     }
 
-    void set_edge_data(T edge_data) {
+    inline void set_edge_data(T edge_data) {
         graph_edge::edge_data = edge_data;
     }
 };
