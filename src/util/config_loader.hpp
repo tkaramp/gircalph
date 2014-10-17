@@ -8,7 +8,6 @@
 class config_loader {
 private:
     static std::string del_spaces(std::string &);
-    static bool starts_with(std::string initial_str, std::string beginning_str);
     static std::string get_conf_file();
 public:
 

@@ -12,6 +12,9 @@ private:
 public:
     static void system_init(int , const char **);
     static void init_system_parameters(int , const char **);
+    static int get_int_value_by_system_param(const char *);
+    static std::string get_string_value_by_system_param(const char *);
+
 };
 
 #endif

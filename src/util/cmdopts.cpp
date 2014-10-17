@@ -3,7 +3,7 @@
 #include "cmdopts.hpp"
 #include "config_loader.hpp"
 
-std::map<std::string, std::string> cmdopts::system_params;
+std::map<std::string, std::string> cmdopts::system_params = config_loader::load_conf_params();
 
 /* Private functions */
 
@@ -21,16 +21,10 @@ void cmdopts::show_executable_usage() {
 
 /* Public functions */
 void cmdopts::system_init(int argc, char const ** argv) {
-    cmdopts::init_system_parameters(argc, argv);
-
-    std::map<std::string,std::string>::iterator it;
-    for( it = system_params.begin(); it != system_params.end(); it++){
-        std::cout << it->first << " => " << it->second << '\n';
-    }
+    init_system_parameters(argc, argv);
 }
 
 void cmdopts::init_system_parameters(int argc, char const ** argv) {
-    system_params = config_loader::load_conf_params();
 
     for (int i = 1; i < argc; i=i+2) {
         std::string flag = argv[i];
@@ -57,5 +51,22 @@ void cmdopts::init_system_parameters(int argc, char const ** argv) {
     }
 
 }
+
+int cmdopts::get_int_value_by_system_param(const char * system_param){
+    if (system_params.find(system_param) != system_params.end())
+        return atoi(system_params[system_param].c_str());
+
+    std::cout<<"Unknow parameter: "<<system_param<<"required"<<std::endl;
+    exit(EXIT_FAILURE);
+}
+
+std::string cmdopts::get_string_value_by_system_param(const char * system_param){
+    if (system_params.find(system_param) != system_params.end())
+        return system_params[system_param].c_str();
+
+    std::cout<<"Unknow parameter: "<<system_param<<"required"<<std::endl;
+    exit(EXIT_FAILURE);
+}
+
 
 

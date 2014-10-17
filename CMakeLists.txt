@@ -7,5 +7,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "/home/thomas/ClionProjects/gircalph/bin")
 set(SOURCE_FILES
         src/examples/check_parameter_loading.cpp
         src/util/cmdopts.cpp
-        src/util/config_loader.cpp)
+        src/util/config_loader.cpp
+        src/util/graph_loader.cpp)
 add_executable(gircalph ${SOURCE_FILES})
