@@ -1,41 +1,57 @@
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <algorithm>
 
 #include "config_loader.hpp"
 
-static std::string config_loader::del_spaces(std::string &str)
+std::string config_loader::del_spaces(std::string &str)
 {
     str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
     return str;
 }
 
-static bool config_loader::starts_with(std::string initial_str, std::string beginning_str)
-{
-    return !initial_str.compare(0, beginning_str.length(), beginning_str);
+std::string config_loader::get_conf_file() {
+    return "../conf/gircalph.cnf";
 }
 
-static std::map<std::string, std::string> config_loader::load_conf_params(){
+std::map<std::string, std::string> config_loader::load_conf_params(){
     std::map<std::string, std::string> config_params;
-    std::istringstream is_file(config_file_path);
+    std::ifstream config_file(get_conf_file().c_str());
     std::string line;
 
-    while( std::getline(is_file, line) )
+    if(!config_file.good()){
+        std::cout<<"Error in reading config file: "<< get_conf_file()<<std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    while( std::getline(config_file, line) )
     {
         del_spaces(line);
-
         // skip comments
-        if (starts_with(line, "#"))
-            continue;
+        if (line[0] == '#') continue;
+
+        //skip empty lines
+        if (line.length() == 0) continue;
 
         std::istringstream is_line(line);
         std::string key;
         if( std::getline(is_line, key, '=') )
         {
             std::string value;
-            if( std::getline(is_line, value) )
-                config_params.insert(key, value);
+
+            //TODO: treat it as an error
+            if (key.length() == 0) continue;
+
+            if( std::getline(is_line, value) ) {
+                //TODO: treat it as an error
+                if (key.length() == 0) continue;
+
+                config_params[key] = value;
+            }
         }
     }
+
+    return config_params;
 
 }

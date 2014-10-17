@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "/home/thomas/ClionProjects/gircalph/bin")
 
 set(SOURCE_FILES
-        src/examples/main.cpp
+        src/examples/check_parameter_loading.cpp
         src/util/cmdopts.cpp
         src/util/config_loader.cpp)
 add_executable(gircalph ${SOURCE_FILES})
