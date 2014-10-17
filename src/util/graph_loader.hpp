@@ -8,7 +8,7 @@
 class graph_loader {
 private:
 public:
-    static std::map<std::string, > load_graph(std::string );
+ //   static std::map<std::string, > load_graph(std::string );
 };
 
 #endif

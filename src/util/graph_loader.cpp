@@ -5,7 +5,7 @@
 
 
 
-std::map<std::string, std::string> graph_loader::load_graph(std::string file) {
+/*std::map<std::string, std::string> graph_loader::load_graph(std::string file) {
     std::ifstream graph_file(file.c_str());
     std::string line;
 
@@ -41,3 +41,4 @@ std::map<std::string, std::string> graph_loader::load_graph(std::string file) {
     }
 
 }
+*/
