@@ -1,15 +1,16 @@
 #ifndef __GRAPH_EDGE_HPP_INCLUDED__
 #define __GRAPH_EDGE_HPP_INCLUDED__
 
-template <typename T>
+// T is edge_data_type
+template <typename edge_data_type>
 class graph_edge {
 
 private:
-    T   edge_data;
+    edge_data_type   edge_data;
     int connected_vertex_id;
 
 public:
-    inline int get_Connected_vertex_id() const {
+    inline int get_connected_vertex_id() const {
         return connected_vertex_id;
     }
 
@@ -17,11 +18,11 @@ public:
         graph_edge::connected_vertex_id = connected_vertex_id;
     }
 
-    inline T get_edge_data() const {
+    inline edge_data_type get_edge_data() const {
         return edge_data;
     }
 
-    inline void set_edge_data(T edge_data) {
+    inline void set_edge_data(edge_data_type edge_data) {
         graph_edge::edge_data = edge_data;
     }
 };

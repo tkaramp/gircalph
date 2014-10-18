@@ -8,7 +8,9 @@ set(SOURCE_FILES
         src/test/check_parameter_loading.cpp
         src/util/cmdopts.cpp
         src/util/config_loader.cpp
-        src/util/graph_loader.cpp
+        src/util/graph_loader.hpp
+        src/api/graph_vertex.hpp
         src/api/graph_edge.hpp
-        src/api/graph_vertex.hpp)
+        src/engine/gircalph_engine.hpp)
+
 add_executable(gircalph ${SOURCE_FILES})

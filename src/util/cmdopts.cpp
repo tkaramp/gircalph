@@ -3,6 +3,7 @@
 #include "cmdopts.hpp"
 #include "config_loader.hpp"
 
+
 std::map<std::string, std::string> cmdopts::system_params = config_loader::load_conf_params();
 
 /* Private functions */
@@ -49,6 +50,8 @@ void cmdopts::init_system_parameters(int argc, char const ** argv) {
             exit(EXIT_FAILURE);
         }
     }
+
+    //TODO: check if all vital parameters have been initialized
 
 }
 

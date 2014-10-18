@@ -45,7 +45,7 @@ std::map<std::string, std::string> config_loader::load_conf_params(){
 
             if( std::getline(is_line, value) ) {
                 //TODO: treat it as an error
-                if (key.length() == 0) continue;
+                if (value.length() == 0) continue;
 
                 config_params[key] = value;
             }

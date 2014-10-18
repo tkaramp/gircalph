@@ -1,4 +1,4 @@
 # Gircalph configuration. Commandline parameters override values in the configuration file.
 x
-num_of_vertices=40
+nvertices=2
 file = "zo"
