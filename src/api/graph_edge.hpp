@@ -10,6 +10,10 @@ private:
     int connected_vertex_id;
 
 public:
+
+    inline graph_edge(int connected_vertex_id) : connected_vertex_id(connected_vertex_id) {
+    }
+
     inline int get_connected_vertex_id() const {
         return connected_vertex_id;
     }

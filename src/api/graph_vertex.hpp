@@ -16,7 +16,7 @@ private:
     std::list<graph_edge<edge_data_type>> out_edges;
 public:
 
-    graph_vertex(int vertex_id) : vertex_id(vertex_id) {
+    inline graph_vertex(int vertex_id) : vertex_id(vertex_id) {
     }
 
     inline int get_id() const {
@@ -27,9 +27,9 @@ public:
         graph_vertex::vertex_id = vertex_id;
     }
 
-    inline std::list<graph_edge<edge_data_type>> const &get_edges() const {
-        std::list<graph_edge<edge_data_type>> edges = get_in_edges();
-        edges.splice(edges.end(), get_out_edges());
+    inline std::list<graph_edge<edge_data_type>> const get_edges() const {
+        std::list<graph_edge<edge_data_type>> edges = get_in_edges(), out_edges = get_out_edges();
+        edges.splice(edges.end(), out_edges);
         return edges;
     }
 
