@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "../util/graph_loader.hpp"
+#include "../util/load_file_data_opts.hpp"
 #include "../util/cmdopts.hpp"
 #include "../api/graph_vertex.hpp"
 
@@ -13,7 +13,7 @@ public:
         int nvertices = cmdopts::get_int_value_by_system_param("nvertices");
         std::string file_path = cmdopts::get_string_value_by_system_param("file");
         std::cout<<file_path<<std::endl;
-        std::vector<graph_vertex <vertex_data_type, edge_data_type>> x = graph_loader<vertex_data_type, edge_data_type>::load_graph(file_path, nvertices);
+        std::vector<graph_vertex <vertex_data_type, edge_data_type>> x = load_file_data_opts::load_graph<vertex_data_type, edge_data_type>(file_path, nvertices);
 
         std::cout<<x.size()<<std::endl;
         std::cout<<x[0].get_edges().size()<<std::endl;

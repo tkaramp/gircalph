@@ -1,12 +1,8 @@
 #include <iostream>
 #include <map>
 #include "cmdopts.hpp"
-#include "config_loader.hpp"
+#include "load_file_data_opts.hpp"
 
-
-std::map<std::string, std::string> cmdopts::system_params = config_loader::load_conf_params();
-
-/* Private functions */
 
 // print system executable's usage
 void cmdopts::show_executable_usage() {
@@ -20,7 +16,6 @@ void cmdopts::show_executable_usage() {
 
 }
 
-/* Public functions */
 void cmdopts::system_init(int argc, char const ** argv) {
     init_system_parameters(argc, argv);
 }

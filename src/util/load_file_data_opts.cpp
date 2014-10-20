@@ -3,19 +3,19 @@
 #include <fstream>
 #include <algorithm>
 
-#include "config_loader.hpp"
+#include "load_file_data_opts.hpp"
 
-std::string config_loader::del_spaces(std::string &str)
+std::string load_file_data_opts::del_spaces(std::string &str)
 {
     str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
     return str;
 }
 
-std::string config_loader::get_conf_file() {
+std::string load_file_data_opts::get_conf_file() {
     return "../conf/gircalph.cnf";
 }
 
-std::map<std::string, std::string> config_loader::load_conf_params(){
+std::map<std::string, std::string> load_file_data_opts::load_conf_params(){
     std::map<std::string, std::string> config_params;
     std::ifstream config_file(get_conf_file().c_str());
     std::string line;
