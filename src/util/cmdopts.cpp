@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
 #include "cmdopts.hpp"
-#include "load_file_data_opts.hpp"
+
 
 
 // print system executable's usage
@@ -33,7 +33,7 @@ void cmdopts::init_system_parameters(int argc, char const ** argv) {
                 exit(EXIT_FAILURE);
             }
 
-            system_params["file"] = argv[i+1];
+            cmdopts::system_params["file"] = argv[i+1];
         }
         else if ( !flag.compare("--help") || !flag.compare("-h")){
             show_executable_usage();
@@ -51,16 +51,16 @@ void cmdopts::init_system_parameters(int argc, char const ** argv) {
 }
 
 int cmdopts::get_int_value_by_system_param(const char * system_param){
-    if (system_params.find(system_param) != system_params.end())
-        return atoi(system_params[system_param].c_str());
+    if (cmdopts::system_params.find(system_param) != cmdopts::system_params.end())
+        return atoi(cmdopts::system_params[system_param].c_str());
 
     std::cout<<"Unknow parameter: "<<system_param<<"required"<<std::endl;
     exit(EXIT_FAILURE);
 }
 
 std::string cmdopts::get_string_value_by_system_param(const char * system_param){
-    if (system_params.find(system_param) != system_params.end())
-        return system_params[system_param].c_str();
+    if (cmdopts::system_params.find(system_param) != cmdopts::system_params.end())
+        return cmdopts::system_params[system_param].c_str();
 
     std::cout<<"Unknow parameter: "<<system_param<<"required"<<std::endl;
     exit(EXIT_FAILURE);

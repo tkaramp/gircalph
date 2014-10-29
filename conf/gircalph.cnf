@@ -1,4 +1,5 @@
 # Gircalph configuration. Commandline parameters override values in the configuration file.
-x
-nvertices=2
+
+nvertices=3
+nsupersteps=10
 file = "zo"
